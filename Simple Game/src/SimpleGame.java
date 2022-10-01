@@ -2,6 +2,12 @@ import java.util.Scanner;
 
 public class SimpleGame {
     public static void main(String[] args) throws Exception {
+        SimpleGame simpleGame = new SimpleGame();
+        
+        simpleGame.run();
+    }
+
+    public void run() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Welcome! You have to pick to pick between 2 options");
@@ -17,33 +23,39 @@ public class SimpleGame {
             userChoice = scanner.nextInt();
         }
 
-        if (userChoice == 1) {
-            System.out.println("Lets convert some seconds to hours, minutes and seconds!");
-            System.out.println("Enter seconds");
-            int userInput = scanner.nextInt();
-            int hours = userInput / 3600;
-            int minutes = 0;
-            int seconds = 0;
-            if (userInput % 3600 >= 60) {
-                minutes = (userInput % 3600) / 60;
-                seconds = (userInput % 3600) % 60;
-            } else {
-                minutes = 0;
-                seconds = userInput % 3600;
-            }
-            System.out.println(hours + " : " + minutes + " : " + seconds);
-        } 
-        if (userChoice == 2) {
-            System.out.println("Lets do some maths!");
-            System.out.println("Enter an integer");
-            String userInput = String.valueOf(scanner.nextInt());
-            char[] arr = userInput.toCharArray();
-            int sum = 0;
-            for (int i = 0; i < arr.length; i++) {
-                int value = Character.getNumericValue(arr[i]);
-                sum += value;
-            }
-            System.out.println(sum);
-        }        
+        if (userChoice == 1) convertTime();
+        if (userChoice == 2) sumDigit(); 
+    }
+
+    public void convertTime() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Lets convert some seconds to hours, minutes and seconds!");
+        System.out.println("Enter seconds");
+        int userInput = scanner.nextInt();
+        int hours = userInput / 3600;
+        int minutes = 0;
+        int seconds = 0;
+        if (userInput % 3600 >= 60) {
+            minutes = (userInput % 3600) / 60;
+            seconds = (userInput % 3600) % 60;
+        } else {
+            minutes = 0;
+            seconds = userInput % 3600;
+        }
+        System.out.println(hours + " : " + minutes + " : " + seconds);
+    }
+
+    public void sumDigit() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Lets do some maths!");
+        System.out.println("Enter an integer");
+        String userInput = String.valueOf(scanner.nextInt());
+        char[] arr = userInput.toCharArray();
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            int value = Character.getNumericValue(arr[i]);
+            sum += value;
+        }
+        System.out.println(sum);
     }
 }
